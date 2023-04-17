@@ -4,6 +4,7 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
@@ -11,6 +12,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
@@ -146,6 +148,61 @@ fun TaskManager(){
     }
 }
 
+@Composable
+fun OneRect(subject: String, decoration: String, color: Color, modifier: Modifier = Modifier){
+    Column(
+        verticalArrangement = Arrangement.Center,
+        horizontalAlignment = Alignment.CenterHorizontally,
+        modifier = modifier
+            .background(color = color)
+            .fillMaxSize()
+    ) {
+        Text(
+            text= subject,
+            fontWeight = FontWeight.Bold,
+            modifier = Modifier.padding(bottom = 16.dp)
+        )
+        Text(
+            text= decoration,
+            textAlign = TextAlign.Justify
+        )
+    }
+}
+
+@Composable
+fun ComposeQuadrant(){
+    Column(Modifier.fillMaxWidth()) {
+        Row(Modifier.weight(1f)) {
+            OneRect(
+                subject = "Text composable",
+                decoration = "Displays text and follows Material Design guidelines.",
+                color = Color.Green,
+                modifier = Modifier.weight(1f)
+            )
+            OneRect(
+                subject = "Image composable",
+                decoration = "Creates a composable that lays out and draws a given Painter class object.",
+                color = Color.Yellow,
+                modifier = Modifier.weight(1f)
+            )
+        }
+        Row(Modifier.weight(1f)){
+            OneRect(
+                subject = "Row composable",
+                decoration = "A layout composable that places its children in a horizontal sequence.",
+                color = Color.Cyan,
+                modifier = Modifier.weight(1f)
+            )
+            OneRect(
+                subject = "Column composable",
+                decoration = "A layout composable that places its children in a vertical sequence.",
+                color = Color.LightGray,
+                modifier = Modifier.weight(1f)
+            )
+        }
+    }
+}
+
 @Preview(name = "My Preview",
         showSystemUi = true)
 @Composable
@@ -154,7 +211,8 @@ fun DefaultPreview() {
         //BirthdayGreetingWithText("종석아 생일 축하해 ^^7", "김치찌개")
         //BirthdayGreetingWithImage("종석아 생일 축하해 ^^7", "김치찌개")
         //ComposeTutorial()
-        TaskManager()
+        //TaskManager
+        ComposeQuadrant()
     }
 }
 
