@@ -14,7 +14,10 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.font.FontStyle
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -118,6 +121,31 @@ fun ComposeTutorial(){
     }
 }
 
+@Composable
+fun TaskManager(){
+
+    val image = painterResource(R.drawable.ic_task_completed)
+
+    Column(
+        verticalArrangement = Arrangement.Center,
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
+        Image(
+            painter = image,
+            contentDescription = null
+        )
+        Text(
+            text = "All tasks completed",
+            fontWeight = FontWeight.Bold,
+            modifier = Modifier.padding(top = 24.dp, bottom = 8.dp)
+        )
+        Text(
+            text = "Nice work!",
+            fontSize = 16.sp
+        )
+    }
+}
+
 @Preview(name = "My Preview",
         showSystemUi = true)
 @Composable
@@ -125,7 +153,8 @@ fun DefaultPreview() {
     AdroidPracticeTheme {
         //BirthdayGreetingWithText("종석아 생일 축하해 ^^7", "김치찌개")
         //BirthdayGreetingWithImage("종석아 생일 축하해 ^^7", "김치찌개")
-        ComposeTutorial()
+        //ComposeTutorial()
+        TaskManager()
     }
 }
 
