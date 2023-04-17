@@ -1,6 +1,5 @@
 package com.example.adroidpractice
 
-import android.media.Image
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -12,11 +11,10 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.semantics.Role.Companion.Image
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -90,12 +88,44 @@ fun BirthdayGreetingWithImage(message : String, from : String, modifier: Modifie
     }
 }
 
+@Composable
+fun ComposeTutorial(){
+    val image = painterResource(R.drawable.bg_compose_background)
+
+    Column{
+        Image(
+            painter = image,
+            contentDescription = null,
+            contentScale = ContentScale.FillWidth
+        )
+        Text(
+            text = stringResource(R.string.Jetpack_compose_tutorial_subject),
+            fontSize = 24.sp,
+            modifier = Modifier.padding(16.dp)
+        )
+        Text(
+            text = stringResource(R.string.Jetpack_compose_tutorial_short_description),
+            fontSize = 24.sp,
+            modifier = Modifier.padding(start = 16.dp, end = 16.dp),
+            textAlign = TextAlign.Justify
+        )
+        Text(
+            text = stringResource(R.string.Jetpack_compose_tutorial_long_description),
+            fontSize = 24.sp,
+            modifier = Modifier.padding(16.dp),
+            textAlign = TextAlign.Justify
+        )
+    }
+}
+
 @Preview(name = "My Preview",
         showSystemUi = true)
 @Composable
 fun DefaultPreview() {
     AdroidPracticeTheme {
         //BirthdayGreetingWithText("종석아 생일 축하해 ^^7", "김치찌개")
-        BirthdayGreetingWithImage("종석아 생일 축하해 ^^7", "김치찌개")
+        //BirthdayGreetingWithImage("종석아 생일 축하해 ^^7", "김치찌개")
+        ComposeTutorial()
     }
 }
+
