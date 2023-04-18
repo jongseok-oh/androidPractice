@@ -155,6 +155,7 @@ fun OneRect(subject: String, decoration: String, color: Color, modifier: Modifie
         horizontalAlignment = Alignment.CenterHorizontally,
         modifier = modifier
             .background(color = color)
+            .padding(16.dp)
             .fillMaxSize()
     ) {
         Text(
